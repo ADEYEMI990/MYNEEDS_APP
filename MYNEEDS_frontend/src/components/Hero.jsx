@@ -1,6 +1,6 @@
 import React from 'react'
 import {assets} from '../assets/assets'
-import {Slider} from "react-slick"
+// import {Slider} from "react-slick"
 
 const Hero = () => {
   return (
