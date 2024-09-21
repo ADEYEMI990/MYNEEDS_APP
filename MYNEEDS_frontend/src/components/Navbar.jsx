@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
 import { CiSearch } from "react-icons/ci";
@@ -6,9 +6,13 @@ import { CgProfile } from "react-icons/cg";
 import { IoCartOutline } from "react-icons/io5";
 import { IoIosMenu } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
+import { ShopContext } from '../context/ShopContext';
 
 const Navbar = () => {
-  const [visible, setVisible] = useState(false)
+  const [visible, setVisible] = useState(false);
+
+  const {setShowSearch} = useContext(ShopContext);
+
   return (
     <div className= 'flex items-center justify-between py-5 font-medium'>
       <Link to='/'>
@@ -44,7 +48,7 @@ const Navbar = () => {
 
       <div className= 'flex items-center gap-6'>
         {/* <img src={assets.search_icon} className= 'w-5 cursor-pointer' alt="" /> */}
-        <CiSearch className= 'w-7 h-7 cursor-pointer' />
+        <CiSearch onClick={()=>setShowSearch(true)} className= 'w-7 h-7 cursor-pointer' />
 
         <div className= 'group relative'>
           {/* <img src={assets.profile_icon} className= 'w-5 cursor-pointer' alt="" /> */}
