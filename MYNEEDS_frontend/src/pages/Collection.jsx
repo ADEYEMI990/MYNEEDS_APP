@@ -135,7 +135,13 @@ const Collection = () => {
         <div className= 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
           {
             filterProducts.map((item,index) =>(
-              <ProductItem key={index} name={item.name} _id={item._id} price={item.price} image={item.image} />
+              <div data-aos ="fade-up"
+              data-aos-delay={item.aosDelay}
+              key={index}
+              className= "space-y-3">
+                <ProductItem name={item.name} _id={item._id} price={item.price} image={item.image} />
+              </div>
+              
             ))
           }
         </div>

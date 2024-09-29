@@ -75,11 +75,15 @@ import stripe_logo from './stripe_logo.png'
 import cross_icon from './cross_icon.png'
 import opay_logo from './opay_logo.png'
 import palmpay_logo from './palmpay_logo.png'
+import hero_img1 from './hero_img1.png'
+import hero_img2 from './hero_img2.png'
 
 
 export const assets = {
     logo,
     hero_img,
+    hero_img1,
+    hero_img2,
     cart_icon,
     dropdown_icon,
     exchange_icon,

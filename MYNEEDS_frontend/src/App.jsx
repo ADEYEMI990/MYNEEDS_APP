@@ -14,8 +14,19 @@ import Footer from './components/Footer'
 import SeachBar from './components/SeachBar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const App = () => {
+  React.useEffect(() => {
+    AOS.init({
+      offset: 100,
+      duration: 800,
+      easing: "ease-in-sine",
+      delay: 100,
+    });
+    AOS.refresh();
+  }, []);
   return (
     <div className= 'px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
       <ToastContainer />

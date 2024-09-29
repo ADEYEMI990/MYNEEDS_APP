@@ -13,6 +13,7 @@ const ShopContextProvider = (props) => {
   const [showSearch,setShowSearch] = useState(false);
   const [cartItems,setCartItems] = useState({});
   const navigate = useNavigate();
+  const [orderItems, setOrderItems] = useState([]);
 
 
   const addToCart = async (itemId,size) => {
@@ -65,6 +66,36 @@ const ShopContextProvider = (props) => {
     setCartItems(cartData);
   }
 
+  const placeOrder = () => {
+    const newOrderItems = []; // or any transformation you need
+    for (const itemId in cartItems) {
+      for (const size in cartItems[itemId]) {
+        if (cartItems[itemId][size] > 0) {
+          // Find the product data for this itemId
+          const productData = products.find(product => product._id === itemId);
+          if (productData) {
+            newOrderItems.push({
+              _id: itemId,
+              size: size,
+              quantity: cartItems[itemId][size],
+              name: productData.name, // Include name
+              price: productData.price, // Include price
+              image: productData.image, // Include image
+              // Add any additional fields you need
+              date: new Date().toLocaleDateString(), // Example date format
+            });
+          }
+          
+        }
+      }
+      console.log(newOrderItems);
+    }
+    setOrderItems(newOrderItems); // assuming you have setOrderItems in your context
+    setCartItems({}); // Optionally clear the cart after placing the order
+  };
+
+
+
   const getCartAmount =() => {
     let totalAmount = 0;
     for (const items in cartItems) {
@@ -86,7 +117,7 @@ const ShopContextProvider = (props) => {
   }
 
   const value = {
-    products,  currency, delivery_fee,search,setSearch,showSearch,setShowSearch,cartItems,addToCart,getCartCount,updateQuantity,getCartAmount, navigate
+    products,  currency, delivery_fee,search,setSearch,showSearch,setShowSearch,cartItems,addToCart,getCartCount,updateQuantity,getCartAmount, navigate, placeOrder, orderItems
   }
 
   return (

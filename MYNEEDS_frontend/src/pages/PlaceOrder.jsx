@@ -8,7 +8,12 @@ const PlaceOrder = () => {
 
   const [method,setMethod] = useState('cod'); 
 
-  const {navigate} = useContext(ShopContext);
+  const {navigate,placeOrder} = useContext(ShopContext);
+
+  const handleCheckout = () => {
+    placeOrder(); // Call the function to place the order
+    navigate('/order'); // Then navigate to the order page
+  };
 
   return (
     <div className= 'flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
@@ -59,7 +64,7 @@ const PlaceOrder = () => {
           </div>
 
           <div className= 'w-full text-end mt-8'>
-            <button onClick={()=>navigate('/order')} className= 'bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
+            <button onClick={handleCheckout} className= 'bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
           </div>
         </div>
       </div>
